@@ -7,6 +7,7 @@ import {FORM_PROVIDERS} from 'angular2/common';
 
 import {RouterActive} from './directives/router-active';
 import {Home} from './home/home';
+import {ComponentLoader} from "./ComponentLoader/ComponentLoader";
 
 /*
  * App Component
@@ -73,8 +74,13 @@ export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
-  constructor() {
 
+  constructor() {
+    // Try to load components
+    //ComponentLoader.loadComponent1('Component1').subscribe();
+    //ComponentLoader.loadComponent2('Component1').subscribe();
+    //ComponentLoader.loadComponent3('Component1').subscribe();
+    ComponentLoader.loadComponent4('Component1').subscribe();
   }
 }
 
