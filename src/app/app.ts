@@ -80,7 +80,9 @@ export class App {
     //ComponentLoader.loadComponent1('Component1').subscribe();
     //ComponentLoader.loadComponent2('Component1').subscribe();
     //ComponentLoader.loadComponent3('Component1').subscribe();
-    ComponentLoader.loadComponent4('Component1').subscribe();
+    //ComponentLoader.loadComponent4('Component1').subscribe();
+    //ComponentLoader.loadComponent5('Component1').subscribe();
+    ComponentLoader.loadComponent6('Component2').subscribe();
   }
 }
 

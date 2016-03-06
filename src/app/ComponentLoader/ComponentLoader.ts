@@ -15,6 +15,8 @@ export class ComponentLoader {
             });
          });
       };
+     *
+     * ==> Not supported
      */
     public static loadComponent1(componentName:string):Observable<Function> {
         var path = `/app/${componentName}/${componentName}`;
@@ -67,6 +69,39 @@ export class ComponentLoader {
         return Observable.create((observer:Subscriber<Function>) => {
             require.ensure([], (require) => {
                 var response = require("../Component1/Component1");
+                console.log(response);
+            })
+        });
+    }
+
+    /**
+     * Suggestion of taurose: Putting var path directly into require(..)
+     *
+     * => Crashes with a warning:
+     *      Critical dependencies:
+     *      50:12-19 require function is used in a way in which dependencies cannot be statically extracted
+     *      @ ./src/app/ComponentLoader/ComponentLoader.ts 50:12-19
+     */
+    public static loadComponent5(componentName:string):Observable<Function> {
+        console.log("loadComponent5");
+        return Observable.create((observer:Subscriber<Function>) => {
+            require.ensure([], (require) => {
+                var response = require(`../${componentName}/${componentName}`);
+                console.log(response);
+            })
+        });
+    }
+
+    /**
+     * Suggestion of taurose: Putting components to load in a subdirectory
+     *
+     * => Works
+     */
+    public static loadComponent6(componentName:string):Observable<Function> {
+        console.log("loadComponent6");
+        return Observable.create((observer:Subscriber<Function>) => {
+            require.ensure([], (require) => {
+                var response = require(`../components/${componentName}/${componentName}`);
                 console.log(response);
             })
         });
